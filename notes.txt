@@ -1,0 +1,67 @@
+Why Streaming Data Ingestion ?
+
+- traditional batch systems fails when:
+    - data is continuous (logs, click, IoT, payments)
+    - decision must be real-time
+
+Real world scenarios:
+- Banking fraud detection
+- E-commerce - real-time recommendation
+- Ride Apps - live location tracking
+- Stock Market - every second market updates
+
+Kafka
+- Distributed, fault-tolerant, high throughput messaging system
+- Real time data pipelines
+- Event Streaming
+- Data integration
+
+Kafka Architecture
+- Producer -> Sends data
+- Broker -> Kafka Server
+- Topic -> Logical data stream
+- Partition -> Data split
+- Consumer -> Reads data
+
+Partition
+- Topic is divided into partition
+- that enables:
+  - Parallelism
+  - Scalability
+
+Kafka Producer
+- Application that writes data into Kafka
+
+How Producer Works ?
+1. Producer creates message
+2. Choose Patition
+3. Sends to broker
+4. Broker stores message
+
+Partition selection strategy
+1. Key-based
+key = user_id
+partition = hash(key) % num_partition
+
+It always maintain order. Same user - same partition
+
+2. Round Robin
+- No key - evenly distributed
+
+3. Custom Partitioner
+- Business logic driven
+
+
+Kafka Consumer
+- Reads data from Kafka topics
+
+Consumer pulls data when ready
+
+
+Kafka Broker
+- Kafka Server storing data
+- Multiple brokers -> cluster
+
+
+Kafka for Messaging
+
