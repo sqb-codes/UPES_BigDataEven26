@@ -1,0 +1,96 @@
+Smart Notification Engine
+
+Features:
+- Multiple events (user activity, transactions, alerts)
+- Processing service that decides:
+  - should user get notified
+  - how important notification is
+  - which channel to use (Email/SMS)
+
+ Problem statement:
+ - user receives too many notifications
+ - spam
+ - irrelevant alerts
+ - duplicate messages
+
+ 1. Event Ingestion (Producer)
+ - Generate events like:
+   - Transaction
+   - Login
+   - Order Updates
+
+ 2. Kafka Backbone
+ - Stores events
+ - Handle streaming
+ - Enable scalability
+
+ 3. Event Processing (Consumer)
+ - Reads events
+ - Applies rules
+
+ 4. Rule-Based filtering
+ - Ignore small transactions
+ - Ignore repeated events
+
+ 5. AI Based Prioritization (Gemini API)
+ - "Is 10rs transaction important" - No
+ - "Is 1000rs transaction important" - Yes
+
+6. Notification Decision Engine
+- Decides Priority - LOW/MEDIUM/HIGH
+- Channel: Email, Dashboard
+
+7. Dashboard (Streamlit)
+- Live events
+- Notifications events
+- Priority levels
+
+
+Tech stacks:
+Core streaming
+- kafka-python: Producer + Consumer communication
+API Layer
+- FastAPI
+Dashboard
+- Streamlit
+AI Layer
+- Google Gemini API
+Data Validation
+- pydantic: Validate event scehma
+Notification
+- smtplib: Email sending library
+Data Processing
+- pandas
+
+
+Event Flow
+User Action -> FastAPI -> Kafka -> Consumer -> AI -> Rules -> Notification -> UI
+
+{
+    "user_id": 101,
+    "amount": "50000",
+    "location": "New Delhi"
+}
+
+Processing - Rule Engine: Amount > 30000 -> suspicious
+Gemini: High risk transaction from new location
+
+Output:
+Priority: High
+Action: Send Email and Show on dashboard
+
+1. Setup docker
+2. Setup docker-compose for zookeeper and kafka
+3. Create project structure
+4. setup python libraries
+5. pip install kafka-python
+6. Create topic
+docker exec -it kafka kafka-topics \
+--create \
+--topic events_topic \
+--bootstrap-server localhost:9092 \
+--partitions 3 \
+--replication-factor 1
+
+7. Implement producer and consumer
+
