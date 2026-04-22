@@ -1,6 +1,7 @@
 from kafka import KafkaConsumer
 import json
 from rule_engine import evaluate_event
+from notification_service import send_notification
 
 consumer = KafkaConsumer(
     # topic to subscribe to
@@ -28,4 +29,7 @@ for message in consumer:
     print("Processed Event")
     print("Priority :",priority)
     print("Reason :",reason)
+
+    if priority == "HIGH":
+        send_notification(event, priority, reason)
 
