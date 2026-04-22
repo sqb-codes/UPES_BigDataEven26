@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer
 import json
+from rule_engine import evaluate_event
 
 consumer = KafkaConsumer(
     # topic to subscribe to
@@ -19,4 +20,12 @@ consumer = KafkaConsumer(
 for message in consumer:
     event = message.value
     print("Received Event:",event)
+
+    result = evaluate_event(event)
+    priority = result['priority']
+    reason = result['reason']
+
+    print("Processed Event")
+    print("Priority :",priority)
+    print("Reason :",reason)
 

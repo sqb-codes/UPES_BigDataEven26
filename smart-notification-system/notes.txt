@@ -79,6 +79,8 @@ Output:
 Priority: High
 Action: Send Email and Show on dashboard
 
+
+Phase 1
 1. Setup docker
 2. Setup docker-compose for zookeeper and kafka
 3. Create project structure
@@ -93,4 +95,34 @@ docker exec -it kafka kafka-topics \
 --replication-factor 1
 
 7. Implement producer and consumer
+
+
+Phase 2: Rule Engine + Smart Filtering
+Analyze events and decide importance
+
+a. Rule based filtering
+b. Priority Assignment (LOW/MEDIUM/HIGH)
+c. Remove noise / irrelevant events
+
+amount < 100 : IGNORE
+100 - 1000 : LOW
+1000 < 10000 : MEDIUM
+10000 < 50000 : HIGH
+amount > 50000 : CRITICAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
