@@ -10,10 +10,10 @@ def send_mail(subject:str, body:str):
     :param body: body of the mail
     :return: none
     """
-    sender = "sender@gmail.com"
-    password = "16 digit app password"
+    sender = "squarebrackets.sb@gmail.com"
+    password = "nzuk uzft prko mqvp"
 
-    receiver = "receiver@gmail.com"
+    receiver = "ravikant.tyagi.ms@gmail.com"
 
     msg = MIMEText(body)
     msg['Subject'] = subject

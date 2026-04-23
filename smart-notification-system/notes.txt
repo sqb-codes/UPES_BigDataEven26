@@ -95,6 +95,11 @@ docker exec -it kafka kafka-topics \
 --replication-factor 1
 
 7. Implement producer and consumer
+Run producer:
+python producer/event_producer.py
+
+Run consumer:
+python consumer/event_consumer.py
 
 
 Phase 2: Rule Engine + Smart Filtering
@@ -111,8 +116,9 @@ amount < 100 : IGNORE
 amount > 50000 : CRITICAL
 
 
-
-
+Phase 3: Notification System (Email Alerts)
+- Send email alerts for HIGH priority events
+- Create a notification service layer
 
 
 
