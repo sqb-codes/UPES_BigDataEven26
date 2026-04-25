@@ -24,4 +24,4 @@ while True:
         value=event
     )
     print("Sent Event :", event)
-    time.sleep(5)
+    time.sleep(2)
